@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
+use App\Http\Middleware\CheckAge;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,10 +19,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/home', function () {
+    echo "Home Page...";
+});
+
 
 Route::get('/about', function(){
     return view('about');
-});
+})->middleware([CheckAge::class]);
 
 // Route::get('/contact', 'ContactController@index'); // this is for the laravel 6 & 7
 
