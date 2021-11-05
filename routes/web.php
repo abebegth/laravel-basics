@@ -24,10 +24,14 @@ Route::get('/home', function () {
 });
 
 
+// Route::get('/about', function(){
+//     return view('about');
+// })->middleware([CheckAge::class]);
+
 Route::get('/about', function(){
     return view('about');
-})->middleware([CheckAge::class]);
+});
 
 // Route::get('/contact', 'ContactController@index'); // this is for the laravel 6 & 7
 
-Route::get('/contact', [ContactController::class, 'index']);
+Route::get('/contact-us', [ContactController::class, 'index'])->name('contact');
