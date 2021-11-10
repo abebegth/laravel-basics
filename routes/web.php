@@ -35,3 +35,6 @@ Route::get('/about', function(){
 // Route::get('/contact', 'ContactController@index'); // this is for the laravel 6 & 7
 
 Route::get('/contact-us', [ContactController::class, 'index'])->name('contact');
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
