@@ -45,6 +45,9 @@
                     </svg> -->
                 </div>
                 <h1>Contact Page</h1>
+                <a href="{{ url('/')}}"> Home </a> |
+                <a href="{{URL::to('/about')}}"> About </a> |
+                <a href="{{ route('contact')}}"> Contact </a> |
 
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                     <div class="grid grid-cols-1 md:grid-cols-2">
