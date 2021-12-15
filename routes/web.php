@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Middleware\CheckAge;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,8 @@ Route::get('/about', function(){
 // Route::get('/contact', 'ContactController@index'); // this is for the laravel 6 & 7
 
 Route::get('/contact-us', [ContactController::class, 'index'])->name('contact');
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
+    $users = User::all();
+    return view('dashboard', compact('users'));
 })->name('dashboard');
