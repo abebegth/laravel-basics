@@ -40,8 +40,8 @@ Route::get('/contact-us', [ContactController::class, 'index'])->name('contact');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     
-    // $users = User::all(); // Eloquent ORM
-    $users = DB::table('users')->get(); // Query Builder
+    $users = User::all(); // Eloquent ORM
+    // $users = DB::table('users')->get(); // Query Builder
 
     return view('dashboard', compact('users'));
 })->name('dashboard');
