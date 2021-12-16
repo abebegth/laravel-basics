@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Middleware\CheckAge;
 use App\Models\User; // the model to be used for the eloquent orm
 use Illuminate\Support\Facades\DB; // to be used for the query builder
@@ -37,6 +38,11 @@ Route::get('/about', function(){
 // Route::get('/contact', 'ContactController@index'); // this is for the laravel 6 & 7
 
 Route::get('/contact-us', [ContactController::class, 'index'])->name('contact');
+
+// Category routes
+Route::get('/category/all', [CategoryController::class, 'allCategories'])->name('all.categories');
+
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     
