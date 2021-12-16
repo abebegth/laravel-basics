@@ -41,6 +41,7 @@ Route::get('/contact-us', [ContactController::class, 'index'])->name('contact');
 
 // Category routes
 Route::get('/category/all', [CategoryController::class, 'allCategories'])->name('all.categories');
+Route::post('/category/add', [CategoryController::class, 'addCategory'])->name('store.category');
 
 
 
