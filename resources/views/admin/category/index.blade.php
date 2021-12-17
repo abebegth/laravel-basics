@@ -34,15 +34,15 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @php($i = 1)
+                                <!-- @php($i = 1) -->
                                 @foreach($categories as $category)
                                     <tr>
-                                        <th scope="row"> {{ $i++}}</th>
+                                        <th scope="row"> {{ $categories->firstItem()+$loop->index}}</th>
                                         <td>{{ $category->category_name}}</td>
                                         <td>{{ $category->user_id}}</td>
                                         <td>
                                             @if($category->created_at)
-                                                {{ Carbon\Carbon::parse($category->created_at)->diffForHumans()}}
+                                                {{ $category->created_at->diffForHumans()}}
                                             @else
                                                 <span class="text-danger">Date not set</span>
                                             @endif
@@ -51,6 +51,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        {{ $categories->links() }}
                     </div>
                 </div>
 

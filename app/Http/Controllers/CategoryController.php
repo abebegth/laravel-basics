@@ -12,8 +12,8 @@ class CategoryController extends Controller
 {
     public function allCategories(){
         // $categories = Category::all();
-        // $categories = Category::latest()->get(); // Eloquent ORM
-        $categories = DB::table('categories')->latest()->get();
+        $categories = Category::latest()->paginate(5); // Eloquent ORM
+        // $categories = DB::table('categories')->latest()->get(); // Query Builder
         return view('admin.category.index', compact('categories'));
     }
 
