@@ -11,8 +11,12 @@ use Illuminate\Support\Facades\DB;
 class CategoryController extends Controller
 {
     public function allCategories(){
+
+        $categories = DB::table('categories')->join('users', 'categories.user_id', 'users.id')->select('categories.*', 'users.name')->latest()->paginate(5);
+
+
         // $categories = Category::all();
-        $categories = Category::latest()->paginate(5); // Eloquent ORM
+        // $categories = Category::latest()->paginate(5); // Eloquent ORM
         // $categories = DB::table('categories')->latest()->get(); // Query Builder
         return view('admin.category.index', compact('categories'));
     }

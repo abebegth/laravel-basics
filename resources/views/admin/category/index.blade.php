@@ -39,10 +39,10 @@
                                     <tr>
                                         <th scope="row"> {{ $categories->firstItem()+$loop->index}}</th>
                                         <td>{{ $category->category_name}}</td>
-                                        <td>{{ $category->user->name}}</td>
+                                        <td>{{ $category->name}}</td>
                                         <td>
                                             @if($category->created_at)
-                                                {{ $category->created_at->diffForHumans()}}
+                                                {{ Carbon\Carbon::parse($category->created_at)->diffForHumans()}}
                                             @else
                                                 <span class="text-danger">Date not set</span>
                                             @endif
