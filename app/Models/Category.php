@@ -17,7 +17,8 @@ class Category extends Model
         'category_name'
     ];
 
-    // public function user(){
-    //     return $this->hasOne(User::class,'id', 'user_id');
-    // }
+    // this function will not be necessary for => query builder
+    public function user(){
+        return $this->hasOne(User::class,'id', 'user_id');
+    }
 }
