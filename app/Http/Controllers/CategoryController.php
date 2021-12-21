@@ -18,8 +18,9 @@ class CategoryController extends Controller
 
         // $categories = Category::all();
         $categories = Category::latest()->paginate(5); // Eloquent ORM
+        $trashedCategories = Category::onlyTrashed()->latest()->paginate(3);
         // $categories = DB::table('categories')->latest()->get(); // Query Builder
-        return view('admin.category.index', compact('categories'));
+        return view('admin.category.index', compact('categories', 'trashedCategories'));
     }
 
     public function addCategory(Request $request){
@@ -64,18 +65,34 @@ class CategoryController extends Controller
     public function updateCategory(Request $request, $id){
 
         // Eloquent ORM
-        // $update = Category::find($id)->update([
-        //     'category_name' => $request->category_name,
-        //     'user_id' => Auth::user()->id
-        // ]);
+        $update = Category::find($id)->update([
+            'category_name' => $request->category_name,
+            'user_id' => Auth::user()->id
+        ]);
 
         // Query Builder
-        $data = array();
-        $data['category_name'] = $request->category_name;
-        $data['user_id'] = Auth::user()->id;
-        DB::table('categories')->where('id', $id)->update($data);
+        // $data = array();
+        // $data['category_name'] = $request->category_name;
+        // $data['user_id'] = Auth::user()->id;
+        // DB::table('categories')->where('id', $id)->update($data);
 
-        
+
         return Redirect()->route('all.categories')->with('success', "Category Updated successfully");
+    }
+
+    public function softDelete($id){
+        $delete = Category::find($id)->delete();
+
+        return Redirect()->back()->with('success', 'Category Trashed...');
+    }
+
+    public function restoreCategory($id){
+        $trashedCat = Category::withTrashed()->find($id)->restore();
+        return Redirect()->back()->with('success', 'Category Restored...');
+    }
+
+    public function permanentDelete($id){
+        $pdelete = Category::onlyTrashed()->find($id)->forceDelete();
+        return Redirect()->back()->with('success', 'Category deleted Permanently...');
     }
 }
