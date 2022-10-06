@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\BrandController;
 use App\Http\Middleware\CheckAge;
 use App\Models\User; // the model to be used for the eloquent orm
 use Illuminate\Support\Facades\DB; // to be used for the query builder
@@ -47,6 +48,10 @@ Route::post('/category/update/{id}', [CategoryController::class, 'updateCategory
 Route::get('/softdelete/category/{id}', [CategoryController::class, 'softDelete']);
 Route::get('/category/restore/{id}', [CategoryController::class, 'restoreCategory']);
 Route::get('/pdelete/category/{id}', [CategoryController::class, 'permanentDelete']);
+
+
+// Brand routes
+Route::get('/brand/all', [BrandController::class, 'allBrands'])->name('all.brands');
 
 
 
