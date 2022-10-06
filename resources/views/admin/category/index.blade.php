@@ -9,8 +9,6 @@
         <div class="container">
             <div class="row">
 
-                
-
                 <div class="col-md-8">
                     <div class="card">
                         @if(session('success'))
@@ -38,7 +36,7 @@
                                 <!-- @php($i = 1) -->
                                 @foreach($categories as $category)
                                     <tr>
-                                        <th scope="row"> {{ $categories->firstItem()+$loop->index}}</th>
+                                        <th scope="row"> {{ $categories->firstItem()+$loop->index }}</th>
                                         <td>{{ $category->category_name}}</td>
                                         <td>{{ $category->user->name}}</td>
                                         <td>
@@ -83,7 +81,7 @@
             </div>
         </div>
 
-        <!-- Trash part -->
+        <!-- Trashed categories part -->
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
