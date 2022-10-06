@@ -24,12 +24,13 @@ class CategoryController extends Controller
     }
 
     public function addCategory(Request $request){
-        $validateData = $request->validate([
-            'category_name' => 'required|unique:categories|max:255'
-        ],
-        [
-            'category_name.required' =>"Please enter category name"
-        ]
+        $validateData = $request->validate(
+            [
+                'category_name' => 'required|unique:categories|max:255'
+            ],
+            [
+                'category_name.required' =>"Please enter category name"
+            ]
         );
 
         // Eloquent ORM
@@ -93,6 +94,6 @@ class CategoryController extends Controller
 
     public function permanentDelete($id){
         $pdelete = Category::onlyTrashed()->find($id)->forceDelete();
-        return Redirect()->back()->with('success', 'Category deleted Permanently...');
+        return Redirect()->back()->with('success', 'Category Deleted Permanently...');
     }
 }
