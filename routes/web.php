@@ -52,6 +52,7 @@ Route::get('/pdelete/category/{id}', [CategoryController::class, 'permanentDelet
 
 // Brand routes
 Route::get('/brand/all', [BrandController::class, 'allBrands'])->name('all.brands');
+Route::post('/brand/add', [BrandController::class, 'addBrand'])->name('store.brand');
 
 
 
