@@ -9,6 +9,8 @@
         <div class="container">
             <div class="row">
 
+            <!-- Display all the brands -->
+
                 <div class="col-md-8">
                     <div class="card">
                         @if(session('success'))
@@ -38,7 +40,7 @@
                                     <tr>
                                         <th scope="row"> {{ $brands->firstItem()+$loop->index }}</th>
                                         <td>{{ $brand->brand_name}}</td>
-                                        <td><img src="" alt=""></td>
+                                        <td><img src="{{ asset($brand->brand_image) }}" style="height: 40px; width: 70px" alt=""></td>
                                         <td>
                                             @if($brand->created_at)
                                             <!-- Carbon is neccessary when we use query builders to fetch data -->
@@ -59,14 +61,15 @@
                     </div>
                 </div>
 
+                <!-- Insert a brand ... the form -->
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-header">Add Brand</div>
                         <div class="card-body">
-                            <form action="{{ route('store.category')}}" method="POST">
+                            <form action="{{ route('store.brand')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Category Name</label>
+                                    <label for="exampleInputEmail1">Brand Name</label>
                                     <input type="text" name="brand_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                                     @error('brand_name')
                                         <span class="text-danger">{{ $message }}</span>
