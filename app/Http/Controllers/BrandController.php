@@ -49,4 +49,12 @@ class BrandController extends Controller
         return Redirect()->back()->with('success', "Brand inserted successfully");
 
     }
+
+    public function editBrand($id){
+        $brandById = Brand::find($id); // Eloquent ORM
+
+        // query builder
+        // $categoryById = DB::table('categories')->where('id', $id)->first();
+        return view('admin.brand.edit', compact('brandById'));
+    }
 }
