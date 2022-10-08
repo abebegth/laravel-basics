@@ -55,6 +55,7 @@ Route::get('/brand/all', [BrandController::class, 'allBrands'])->name('all.brand
 Route::post('/brand/add', [BrandController::class, 'addBrand'])->name('store.brand');
 Route::get('/brand/edit/{id}', [BrandController::class, 'editBrand']);
 Route::post('/brand/update/{id}', [BrandController::class, 'updateBrand']);
+Route::get('/delete/brand/{id}', [BrandController::class, 'deleteBrand']);
 
 
 
