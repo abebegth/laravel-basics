@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Multipic extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'image'
+    ];
 }

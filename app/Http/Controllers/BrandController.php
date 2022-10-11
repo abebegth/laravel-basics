@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Brand;
+use App\Models\Multipic;
 use Illuminate\Support\Carbon;
 use Image;
 
@@ -42,7 +43,7 @@ class BrandController extends Controller
 
         // using image intervention package
         $generated_name = hexdec(uniqid()).'.'.$brand_image->getClientOriginalExtension();
-        Image::make($brand_image)->resize(300, 200)->save('images/brand/'.$generated_name);
+        Image::make($brand_image)->resize(300, 300)->save('images/brand/'.$generated_name);
         $last_image = 'images/brand/'.$generated_name;
 
         // Eloquent ORM --- Insert into the database
@@ -121,5 +122,30 @@ class BrandController extends Controller
 
         Brand::find($id)->delete();
         return Redirect()->back()->with('success', "Brand Deleted successfully");
+    }
+
+    // functions for the multiple image part
+    public function multipic(){
+
+        $images = Multipic::all();
+        return view('admin.multipic.index', compact('images'));
+    }
+
+    public function addMultipic(Request $request){
+        $multi_image = $request->file('image'); // get the uploaded image
+        
+        foreach ($multi_image as $image) {
+            // using image intervention package
+            $generated_name = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+            Image::make($image)->resize(300, 300)->save('images/multipic/'.$generated_name);
+            $last_image = 'images/multipic/'.$generated_name;
+
+            // Eloquent ORM --- Insert into the database
+            Multipic::insert([
+                'image'=>$last_image,
+                'created_at'=>Carbon::now()
+            ]);
+        }
+        return Redirect()->back()->with('success', "Brand inserted successfully");
     }
 }
