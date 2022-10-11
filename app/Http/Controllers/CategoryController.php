@@ -10,6 +10,12 @@ use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
+
+    // create Auth constructor
+    public function __construct(){
+        $this->middleware('auth');
+    }
+    
     public function allCategories(){
 
         // query builder

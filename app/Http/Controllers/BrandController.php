@@ -10,6 +10,12 @@ use Image;
 
 class BrandController extends Controller
 {
+
+     // create Auth constructor
+     public function __construct(){
+        $this->middleware('auth');
+    }
+    
     public function allBrands(){
 
         $brands = Brand::latest()->paginate(5);
