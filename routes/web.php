@@ -68,10 +68,18 @@ Route::post('/multipic/add', [BrandController::class, 'addMultipic'])->name('sto
 
 
 
+// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    
+//     $users = User::all(); // Eloquent ORM
+//     // $users = DB::table('users')->get(); // Query Builder
+
+//     return view('dashboard', compact('users'));
+// })->name('dashboard');
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     
-    $users = User::all(); // Eloquent ORM
+    // $users = User::all(); // Eloquent ORM
     // $users = DB::table('users')->get(); // Query Builder
 
-    return view('dashboard', compact('users'));
+    return view('admin.index');
 })->name('dashboard');
