@@ -42,8 +42,14 @@
                         <div class="sub-menu">
                             
                             <li  class="active" >
-                                <a class="sidenav-item-link" href="index.html">
+                                <a class="sidenav-item-link" href="{{ route('dashboard') }}">
                                     <span class="nav-text">Home</span>
+                                    
+                                </a>
+                            </li>
+                            <li  class="active" >
+                                <a class="sidenav-item-link" href="{{ route('slider') }}">
+                                    <span class="nav-text">Slider</span>
                                     
                                 </a>
                             </li>

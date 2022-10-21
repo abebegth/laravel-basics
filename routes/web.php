@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\HomeController;
 use App\Http\Middleware\CheckAge;
 use App\Models\User; // the model to be used for the eloquent orm
 use Illuminate\Support\Facades\DB; // to be used for the query builder
@@ -67,6 +68,8 @@ Route::get('/delete/brand/{id}', [BrandController::class, 'deleteBrand']);
 // Multi Image routes
 Route::get('/multi/image', [BrandController::class, 'multipic'])->name('multi.image');
 Route::post('/multipic/add', [BrandController::class, 'addMultipic'])->name('store.multipic');
+
+Route::get('/slider', [HomeController::class, 'slider'])->name('slider');
 
 
 
