@@ -6,7 +6,9 @@
         <div class="container">
             <div class="row">
 
-            <!-- Display all the Sliders -->
+                <!-- Display all the Sliders -->
+                <h4>Slider - Carousel</h4>
+                <a href="{{ route('add.slider') }}"><button class="btn btn-success">Add Slider</button></a>
 
                 <div class="col-md-12">
                     <div class="card">
@@ -32,10 +34,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- @php($i = 1) -->
+                                @php($i = 1)
                                 @foreach($sliders as $slider)
                                     <tr>
-                                        <th scope="row"> {{ $sliders->firstItem()+$loop->index }}</th>
+                                        <th scope="row"> {{ $i++ }}</th>
                                         <td>{{ $slider->title}}</td>
                                         <td>{{ $slider->description}}</td>
                                         <td><img src="{{ asset($slider->image) }}" style="height: 40px; width: 70px" alt=""></td>
