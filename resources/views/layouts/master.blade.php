@@ -41,7 +41,7 @@
 
   @include('layouts.header')
 
-  @include('layouts.slider')
+  
 
   <main id="main">
 
