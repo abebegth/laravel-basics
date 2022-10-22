@@ -8,7 +8,7 @@
 
                 <!-- Display all the Sliders -->
                 <h4>About</h4>
-                <a href="{{ route('add.slider') }}"><button class="btn btn-success">Add About</button></a>
+                <a href="{{ route('add.about') }}"><button class="btn btn-success">Add About</button></a>
 
                 <div class="col-md-12">
                     <div class="card">
