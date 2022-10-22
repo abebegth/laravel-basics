@@ -5,6 +5,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AboutController;
 use App\Http\Middleware\CheckAge;
 use App\Models\User; // the model to be used for the eloquent orm
 use Illuminate\Support\Facades\DB; // to be used for the query builder
@@ -73,6 +74,9 @@ Route::post('/multipic/add', [BrandController::class, 'addMultipic'])->name('sto
 Route::get('/slider', [HomeController::class, 'slider'])->name('slider');
 Route::get('add/slider', [HomeController::class, 'addSlider'])->name('add.slider');
 Route::post('store/slider', [HomeController::class, 'storeSlider'])->name('store.slider');
+
+// About Routes
+Route::get('/about', [AboutController::class, 'about'])->name('about');
 
 
 
