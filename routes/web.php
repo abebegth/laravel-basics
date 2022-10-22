@@ -82,6 +82,7 @@ Route::post('store/about', [AboutController::class, 'storeAbout'])->name('store.
 
 Route::get('/about/edit/{id}', [AboutController::class, 'editAbout']);
 Route::post('/about/update/{id}', [AboutController::class, 'updateAbout']);
+Route::get('/delete/about/{id}', [AboutController::class, 'deleteAbout']);
 
 
 
