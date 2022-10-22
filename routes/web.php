@@ -48,7 +48,7 @@ Route::get('/about', function(){
 
 // Route::get('/contact', 'ContactController@index'); // this is for the laravel 6 & 7
 
-Route::get('/contact-us', [ContactController::class, 'index'])->name('contact');
+// Route::get('/contact-us', [ContactController::class, 'index'])->name('contact');
 
 // Category routes
 Route::get('/category/all', [CategoryController::class, 'allCategories'])->name('all.categories');
@@ -84,6 +84,9 @@ Route::post('store/about', [AboutController::class, 'storeAbout'])->name('store.
 Route::get('/about/edit/{id}', [AboutController::class, 'editAbout']);
 Route::post('/about/update/{id}', [AboutController::class, 'updateAbout']);
 Route::get('/delete/about/{id}', [AboutController::class, 'deleteAbout']);
+
+// CONTACT ROUTES
+Route::get('/contact', [ContactController::class, 'contact'])->name('contact');
 
 
 
