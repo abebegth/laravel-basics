@@ -28,4 +28,22 @@ class AboutController extends Controller
 
         return Redirect()->route('about')->with('success', "About inserted successfully");
     }
+
+    public function editAbout($id){
+        $aboutById = About::find($id); // Eloquent ORM
+
+        // query builder
+        // $categoryById = DB::table('categories')->where('id', $id)->first();
+        return view('admin.about.edit', compact('aboutById'));
+    }
+
+    public function updateAbout(Request $request, $id){
+        About::find($id)->update([
+            'title' => $request->title,
+            'summary' => $request->summary,
+            'detail' => $request->detail
+        ]);
+
+        return Redirect()->route('about')->with('success', "About Updated Successfully");
+    }
 }
