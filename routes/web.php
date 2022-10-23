@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ChangePassword;
 use App\Http\Middleware\CheckAge;
 use App\Models\User; // the model to be used for the eloquent orm
 use Illuminate\Support\Facades\DB; // to be used for the query builder
@@ -103,3 +104,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::get('/user/logout', [BrandController::class, 'logout'])->name('user.logout');
+
+
+// CHANGE PASSWORD AND USER PROFILE ROUTES
+
+Route::get('/user/change-password', [ChangePassword::class, 'changePassword'])->name('change.password');
