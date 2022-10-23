@@ -60,7 +60,12 @@ class BrandController extends Controller
             'created_at'=>Carbon::now()
         ]);
 
-        return Redirect()->back()->with('success', "Brand inserted successfully");
+        $notification = array([
+            'message' => 'Brand Inserted Successfully',
+            'alert-type' => 'success',
+        ]);
+
+        return Redirect()->back()->with($notification);
 
     }
 

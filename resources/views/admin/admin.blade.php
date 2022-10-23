@@ -22,6 +22,7 @@
 
         <!-- SLEEK CSS -->
         <link id="sleek-css" rel="stylesheet" href="{{ asset('backend/assets/css/sleek.css') }}" />
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" />
 
         
 
@@ -148,7 +149,7 @@
                             </li>
 
                             <li>
-                                <a href="profile.html">
+                                <a href="{{ route('profile.edit') }}">
                                 <i class="mdi mdi-account"></i> My Profile
                                 </a>
                             </li>
@@ -225,6 +226,28 @@
         <script src="{{ asset('backend/assets/js/date-range.js') }}"></script>
         <script src="{{ asset('backend/assets/js/map.js') }}"></script>
         <script src="{{ asset('backend/assets/js/custom.js') }}"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        <script>
+            @if(Session::has('message')){
+                var type = " {{Session::get('alert-type', 'info')}} "
+                switch (type) {
+                    case 'info':
+                        toastr.info(" {{ Session::get('message') }}")
+                        break;
+                    case 'success':
+                        toastr.success(" {{ Session::get('message') }}")
+                        break;
+                    case 'warning':
+                        toastr.warning(" {{ Session::get('message') }}")
+                        break;
+                    case 'error':
+                        toastr.error(" {{ Session::get('message') }}")
+                        break;
+                }
+            }
+            @endif
+        </script>
+        
 
 
     </body>
