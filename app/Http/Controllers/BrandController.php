@@ -122,8 +122,6 @@ class BrandController extends Controller
             return Redirect()->back()->with('success', "Brand Updated successfully");
         }
 
-        
-
     }
 
     public function deleteBrand($id){
